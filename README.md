@@ -3,9 +3,9 @@
   <img src="./assets/logo-dpemt.png" alt="Logo DPE-MT" width="400">
 </p>
 
-# 📘 Manual de Progressão Funcional - DPE/MT
+# 📘 Manual de Progressão Funcional - DPEMT
 
-Este projeto foi desenvolvido com foco no **Grupo de Estudos em Linguagem Simples** da Defensoria Pública do Estado de Mato Grosso (DPE-MT).
+Este projeto foi desenvolvido com foco no **Grupo de Estudos em Linguagem Simples** da Defensoria Pública do Estado de Mato Grosso (DPEMT).
 
 > Uma aplicação 100% desenvolvida em **Google Apps Script**, com **HTML, CSS e JS puro**, para facilitar a jornada de servidores públicos na progressão funcional.
 
@@ -45,7 +45,7 @@ Este projeto foi desenvolvido com foco no **Grupo de Estudos em Linguagem Simple
 ├── folder.html           # Frontend: página HTML principal
 ├── appsscript.json       # Configuração do projeto Apps Script
 ├── assets/               # Imagens, gifs e recursos estáticos
-│   ├── logo-verde.png
+│   ├── logo-dpemt.png
 │   ├── 1.gif ... 7.gif
 ```
 
@@ -73,6 +73,6 @@ Caso tenha dúvidas ou queira contribuir:
 
 - **GitHub**: [zeraiden56](https://github.com/zeraiden56)
 - **Instagram**: [@dias.arthurcosta](https://instagram.com/dias.arthurcosta)
-- **WhatsApp**: [Fale com a DGP](https://wa.me/556599545349)
+- **WhatsApp**: [Fale com a Diretoria de Gestão de Pessoas](https://wa.me/556599545349)
 
 ---
