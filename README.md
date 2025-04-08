@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://www.defensoria.mt.def.br/dpmt/assets/images/Logo-branco.png" alt="Logo DPE-MT" height="80">
+  <img src="./assets/logo-dpemt" alt="Logo DPE-MT" height="80">
 </p>
 
 <h1 align="center">📘 Manual de Progressão Funcional - DPE/MT</h1>
