@@ -1,114 +1,81 @@
-<p align="center">
-  <img src="https://github.com/zeraiden56/manual-progressao/assets/logo-dpemt" alt="Logo DPE-MT" height="80">
-</p>
 
-<h1 align="center">📘 Manual de Progressão Funcional - DPE/MT</h1>
+# 📘 Manual de Progressão Funcional - DPE/MT
 
 <p align="center">
-  Este projeto foi desenvolvido com foco no <strong>Grupo de Estudos em Linguagem Simples</strong> da Defensoria Pública do Estado de Mato Grosso (DPE-MT).<br/>
-  Uma aplicação 100% desenvolvida em <strong>Google Apps Script</strong>, com HTML, CSS e JS puro, para facilitar a jornada de servidores públicos na progressão funcional.
+  <img src="./assets/logo-dpemt.png" alt="Logo DPE-MT" width="200">
 </p>
 
----
+Este projeto foi desenvolvido com foco no **Grupo de Estudos em Linguagem Simples** da Defensoria Pública do Estado de Mato Grosso (DPE-MT).
 
-## ✨ Sobre o Projeto
-
-O **Manual de Progressão Funcional** é uma aplicação web leve, responsiva e acessível, criada para esclarecer e guiar servidores da DPE-MT no processo de progressão funcional, utilizando linguagem simples, recursos visuais e automações.
-
-O site apresenta:
-
-- Critérios e requisitos de progressão vertical e horizontal
-- Tabelas de salários atualizadas por classe e nível
-- Um carrossel ilustrado com **29 passos visuais**
-- Modo noturno, botão de cópia automática e busca inteligente
-- Acesso rápido ao SEI via botão ilustrado
+> Uma aplicação 100% desenvolvida em **Google Apps Script**, com **HTML, CSS e JS puro**, para facilitar a jornada de servidores públicos na progressão funcional.
 
 ---
 
-## 🛠️ Tecnologias Utilizadas
+## 🚀 Funcionalidades Demonstradas
 
-- Google **Apps Script** (backend e controle de rotas)
-- HTML + CSS + JavaScript (frontend leve e funcional)
-- Google Sheets como base de dados (se necessário)
-- GitHub como versionamento e hospedagem de código
+### 1. Acesso ao Portal e Interface Responsiva
+![Acesso](./assets/1.gif)
 
----
+### 2. Pesquisa Interativa com Destaques
+![Pesquisa](./assets/2.gif)
 
-## 🚀 Como funciona o Apps Script Web App?
+### 3. Alternância de Tema: Claro e Escuro
+![Tema](./assets/3.gif)
 
-> O Apps Script permite criar aplicações web que rodam no Google Cloud e podem ser acessadas via URL pública.
+### 4. Navegação Fixa e Responsiva via Menu Lateral
+![Menu](./assets/4.gif)
 
-### 1. Estrutura de Arquivos
+### 5. Copiar Modelo de Requerimento com Toast de Confirmação
+![Copiar Modelo](./assets/5.gif)
 
-- `controller.gs`: controla as rotas e lógica de servidor (tipo um "router")
-- `folder.html`: arquivo HTML completo com CSS e JS embutido
-- `appsscript.json`: configurações de deploy e permissões
+### 6. Carrossel de Passo a Passo Interativo
+![Carrossel](./assets/6.gif)
 
-### 2. Deploy do Web App
-
-1. Vá em **Extensões > Apps Script**
-2. Crie um novo projeto ou edite o existente
-3. No menu superior, clique em **Implantar > Implantar como aplicativo da web**
-4. Selecione:
-   - Executar como: `Usuário que está implantando`
-   - Quem pode acessar: `Qualquer pessoa, mesmo anônima`
-5. Copie o link gerado — esse é o seu site 🚀
+### 7. Tabela de Salários Estilizada e Acessível
+![Tabela](./assets/7.gif)
 
 ---
 
-## 💡 Como editar?
+## 📁 Estrutura do Projeto
 
-Você pode editar o conteúdo diretamente no `folder.html`, incluindo novas seções, imagens ou reformular textos. O CSS está embutido no `<style>` para facilitar o controle visual.
-
-Para editar imagens do carrossel, substitua as URLs no HTML por imagens novas do seu servidor ou Google Drive (convertido para link visual direto).
-
----
-
-## 🧩 Como foi feito o site?
-
-O site foi criado com:
-
-- **Design simples e funcional** com HTML5 e CSS3 moderno
-- Um **carrossel em JavaScript puro**, controlado por botões
-- Compatibilidade com dispositivos móveis
-- Modo escuro para conforto visual
-- Estrutura modular: uma página para tudo (SPA-like)
-
----
-
-## 📎 Exemplo de uso no Apps Script
-
-```javascript
-function doGet(request) {
-  return HtmlService.createHtmlOutputFromFile("folder")
-    .setTitle("Manual de Progressão Funcional")
-    .setFaviconUrl("https://www.defensoria.mt.def.br/dpmt/assets/images/favicon.png");
-}
+```
+📦 Manual de Progressão
+├── Controller.gs         # Backend: controlador de rotas e páginas
+├── folder.html           # Frontend: página HTML principal
+├── appsscript.json       # Configuração do projeto Apps Script
+├── assets/               # Imagens, gifs e recursos estáticos
+│   ├── logo-verde.png
+│   ├── 1.gif ... 7.gif
 ```
 
 ---
 
-## 📷 Imagens hospedadas
+## 📌 Tecnologias Utilizadas
 
-As imagens do passo-a-passo estão hospedadas em:
-
-```
-https://blucaju.com.br/imagens-defensoria/progressaofuncional/
-```
-
-Você pode subir novas ou modificar conforme necessário.
+- Google Apps Script
+- HTML5 / CSS3
+- JavaScript Vanilla
+- Design Responsivo (mobile-first)
+- Integração com planilhas e estrutura modular de pastas
 
 ---
 
-## 🧠 Idealizado por
+## 🧠 Grupo de Estudos em Linguagem Simples
 
-Este projeto foi idealizado por Arthur Costa Dias, no âmbito do Grupo de Estudos de Linguagem Simples, com apoio da Diretoria Jurídica e da Diretoria de Gestão de Pessoas da DPE-MT.
+Esse projeto nasceu no Grupo de Estudos em Linguagem Simples da DPE-MT, com a missão de **melhorar a comunicação pública** e tornar mais **acessível e clara** a informação jurídica.
+
+---
+
+## 📬 Contato
+
+Caso tenha dúvidas ou queira contribuir:
+
+- **GitHub**: [zeraiden56](https://github.com/zeraiden56)
+- **Instagram**: [@dias.arthurcosta](https://instagram.com/dias.arthurcosta)
+- **WhatsApp**: [Fale com a DGP](https://wa.me/556599545349)
 
 ---
 
-## 📄 Licença
-
-Projeto público para uso institucional, educacional e governamental. Consulte os responsáveis antes de reproduzir fora do contexto da DPE-MT.
-
----
-<p align="center"><strong>Feito com 💚 para facilitar o serviço público.</strong></p>
+<p align="center">
+  <img src="./assets/7.gif" alt="Obrigado!" width="100%">
+</p>
