@@ -1,9 +1,9 @@
 
-# 📘 Manual de Progressão Funcional - DPE/MT
-
 <p align="center">
-  <img src="./assets/logo-dpemt.png" alt="Logo DPE-MT" width="200">
+  <img src="./assets/logo-dpemt.png" alt="Logo DPE-MT" width="400">
 </p>
+
+# 📘 Manual de Progressão Funcional - DPE/MT
 
 Este projeto foi desenvolvido com foco no **Grupo de Estudos em Linguagem Simples** da Defensoria Pública do Estado de Mato Grosso (DPE-MT).
 
@@ -13,23 +13,24 @@ Este projeto foi desenvolvido com foco no **Grupo de Estudos em Linguagem Simple
 
 ## 🚀 Funcionalidades Demonstradas
 
+
 ### 1. Acesso ao Portal e Interface Responsiva
-![Acesso](./assets/1.gif)
-
-### 2. Pesquisa Interativa com Destaques
 ![Pesquisa](./assets/2.gif)
-
-### 3. Alternância de Tema: Claro e Escuro
-![Tema](./assets/3.gif)
 
 ### 4. Navegação Fixa e Responsiva via Menu Lateral
 ![Menu](./assets/4.gif)
 
+### 3. Pesquisa Interativa com Destaques
+![Tema](./assets/3.gif)
+
+### 1. Alternância de Tema: Claro e Escuro
+![Acesso](./assets/1.gif)
+
+### 6. Botão fixo para contato com a Diretoria de Gestão de Pessoas
+![Carrossel](./assets/6.gif)
+
 ### 5. Copiar Modelo de Requerimento com Toast de Confirmação
 ![Copiar Modelo](./assets/5.gif)
-
-### 6. Carrossel de Passo a Passo Interativo
-![Carrossel](./assets/6.gif)
 
 ### 7. Tabela de Salários Estilizada e Acessível
 ![Tabela](./assets/7.gif)
@@ -75,7 +76,3 @@ Caso tenha dúvidas ou queira contribuir:
 - **WhatsApp**: [Fale com a DGP](https://wa.me/556599545349)
 
 ---
-
-<p align="center">
-  <img src="./assets/7.gif" alt="Obrigado!" width="100%">
-</p>
