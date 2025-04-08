@@ -13,27 +13,26 @@ Este projeto foi desenvolvido com foco no **Grupo de Estudos em Linguagem Simple
 
 ## 🚀 Funcionalidades Demonstradas
 
+### 1. Navegação Fixa e Responsiva via Menu Lateral
+![Menu Lateral](./assets/2.gif)
 
-### 1. Acesso ao Portal e Interface Responsiva
-![Pesquisa](./assets/2.gif)
-
-### 4. Navegação Fixa e Responsiva via Menu Lateral
-![Menu](./assets/4.gif)
+### 2. Alternância de Tema: Claro e Escuro
+![Alternância de Tema](./assets/1.gif)
 
 ### 3. Pesquisa Interativa com Destaques
-![Tema](./assets/3.gif)
+![Pesquisa Interativa](./assets/3.gif)
 
-### 1. Alternância de Tema: Claro e Escuro
-![Acesso](./assets/1.gif)
-
-### 6. Botão fixo para contato com a Diretoria de Gestão de Pessoas
-![Carrossel](./assets/6.gif)
+### 4. Passo a passo em formato de Carrossel
+![Carrossel de Passos](./assets/4.gif)
 
 ### 5. Copiar Modelo de Requerimento com Toast de Confirmação
-![Copiar Modelo](./assets/5.gif)
+![Copiar Modelo de Requerimento](./assets/5.gif)
 
-### 7. Tabela de Salários Estilizada e Acessível
-![Tabela](./assets/7.gif)
+### 6. Tabela de Salários Estilizada e Acessível
+![Tabela de Salários](./assets/7.gif)
+
+### 7. Botão fixo para contato com a Diretoria de Gestão de Pessoas
+![Botão de Contato com a DGP](./assets/6.gif)
 
 ---
 
