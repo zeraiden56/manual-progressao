@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./assets/logo-dpemt" alt="Logo DPE-MT" height="80">
+  <img src="https://github.com/zeraiden56/manual-progressao/assets/logo-dpemt" alt="Logo DPE-MT" height="80">
 </p>
 
 <h1 align="center">📘 Manual de Progressão Funcional - DPE/MT</h1>
