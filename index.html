@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manual de Progressão Funcional da DPE-MT</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap">
+  <style>
+      :root {
+        --bg-light: #f5fdfb;
+        --bg-dark: #00291d;
+        --text-light: #222;
+        --text-dark: #e7fbee;
+        --accent: #006644;
+        --accent-hover: #00b36a;
+        --sidebar-bg: #e6f4ef;
+        --sidebar-bg-dark: #004733;
+        --card-bg: #ffffff;
+        --card-dark-bg: #00402f;
+        --header-height: 180px;
+      }
+      
+      * {
+        box-sizing: border-box;
+      }
+      
+      html {
+        scroll-behavior: smooth;
+      }
+      
+      body {
+        margin: 0;
+        font-family: 'Ubuntu', sans-serif;
+        background-color: var(--bg-light);
+        color: var(--text-light);
+        transition: background-color 0.3s ease, color 0.3s ease;
+      }
+      
+      body.dark-mode {
+        background-color: var(--bg-dark);
+        color: var(--text-dark);
+      }
+      
+      .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background-color: var(--accent);
+        color: white;
+        padding: 20px;
+        font-weight: bold;
+        z-index: 1000;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        flex-wrap: wrap;
+        min-height: var(--header-height);
+      }
+      
+      .header .logo {
+        height: auto;
+        max-height: 60px;
+        width: auto;
+      }
+      
+      .header-title {
+        flex: 1;
+        font-size: 36px;
+        text-align: center;
+      }
+      
+      .toggle-btn {
+        background-color: transparent;
+        color: white;
+        border: 1px solid white;
+        border-radius: 20px;
+        padding: 6px 14px;
+        font-size: 14px;
+        cursor: pointer;
+      }
+      
+      .menu-toggle {
+        display: none;
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        z-index: 1001;
+        background-color: var(--accent);
+        color: white;
+        border: none;
+        font-size: 24px;
+        padding: 6px 12px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+    
+      .sidebar {
+        position: fixed;
+        top: 10px;
+        left: 0;
+        width: 320px;
+        height: 100%;
+        background-color: var(--sidebar-bg);
+        padding-top: calc(var(--header-height) + 10px);
+        padding-left: 20px;
+        padding-right: 20px;
+        overflow-y: auto;
+        box-shadow: 4px 0 10px rgba(0,0,0,0.1);
+        border-right: 1px solid #ccc;
+        z-index: 999;
+      }
+      
+      body.dark-mode .sidebar {
+        background-color: var(--sidebar-bg-dark);
+      }
+    
+    .sidebar a {
+      display: block;
+      color: var(--accent);
+      font-weight: 600;
+      text-decoration: none;
+      margin-bottom: 20px;
+      padding: 10px 16px;
+      border-radius: 6px;
+      transition: background 0.2s, color 0.2s;
+      font-size: 18px;
+    }
+    
+    /* Carousel Styles */
+    .carousel-container {
+      position: relative;
+      max-width: 100%;
+      margin: auto;
+      text-align: center;
+    }
+
+    .carousel-slide {
+      display: none;
+      text-align: center;
+    }
+
+    .carousel-slide img {
+      max-width: 100%;
+      height: auto;
+      max-height: 500px; /* fixar altura máxima para evitar variação */
+      display: block;
+      margin: 0 auto;
+    }
+
+    .carousel-text {
+      padding: 14px 20px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #333;
+      background-color: #f7f7f7;
+      border-top: 1px solid #ccc;
+      margin-top: 10px;
+    }
+
+    .carousel-buttons {
+      margin-top: 10px;
+    }
+
+    .carousel-buttons button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .sei-button-container {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    .sei-button-container a {
+      display: inline-block;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .sei-button-container img {
+      display: block;
+      width: 250px;
+      height: auto;
+      border-radius: 12px;
+    }
+
+    body.dark-mode .sidebar a {
+      color: white;
+    }
+    
+    .sidebar a:hover {
+      background-color: var(--accent);
+      color: white;
+    }
+    
+    .main {
+      margin-left: 320px; /* igual à largura da sidebar */
+      padding: calc(var(--header-height) + 50px) 20px 60px 40px;
+      max-width: none;
+      width: calc(100% - 320px);
+    }
+    
+    .section {
+      background-color: var(--card-bg);
+      padding: 30px;
+      margin-bottom: 50px;
+      border-radius: 16px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+      scroll-margin-top: calc(var(--header-height) + 40px);
+    }
+    
+    body.dark-mode .section {
+      background-color: var(--card-dark-bg);
+      box-shadow: 0 6px 16px rgba(255,255,255,0.05);
+    }
+
+    body.dark-mode strong[style*="color: var(--accent)"] {
+      color: #7fffa9 !important; /* Verde claro para melhor contraste no modo noturno */
+    }
+
+    
+    .section h2 {
+      font-size: 26px;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+    
+    body.dark-mode .section h2 {
+      color: var(--text-dark);
+    }
+    
+    .section h3 {
+      font-size: 22px;
+      margin-top: 24px;
+      margin-bottom: 12px;
+    }
+    
+    .section p {
+      font-size: 18px;
+      line-height: 1.8;
+      margin-bottom: 14px;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+      margin-top: 20px;
+    }
+
+    ul li {
+      position: relative;
+      font-size: 18px;
+      margin-bottom: 12px;
+      padding-left: 28px;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    ul li::before {
+      content: "\2713";
+      position: absolute;
+      left: 0;
+      top: 2px;
+      font-size: 18px;
+      color: var(--accent);
+    }
+
+    body.dark-mode ul li {
+      color: #7fffa9; /* Verde claro no modo noturno */
+    }
+
+    body.dark-mode ul li::before {
+      color: #7fffa9; /* Cor do ícone ✓ no modo noturno */
+    }
+
+    .model-box {
+      background: #f4fef9;
+      border: 1px solid var(--accent);
+      border-radius: 10px;
+      padding: 20px;
+      margin-top: 20px;
+      position: relative;
+    }
+
+    .model-box pre {
+      white-space: pre-wrap;
+      font-family: inherit;
+      font-size: 16px;
+      color: #333;
+    }
+
+    .copy-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 6px 12px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    
+    /* SALARY TABLE (fora da media query) */
+    .salary-table {
+      overflow-x: auto;
+      margin-top: 20px;
+    }
+    .salary-table table {
+      border-collapse: collapse;
+      width: 100%;
+      font-size: 16px;
+    }
+    .salary-table th, .salary-table td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: center;
+    }
+    .salary-table th {
+      background-color: var(--accent);
+      color: white;
+    }
+    .salary-table tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+    body.dark-mode .salary-table th {
+      background-color: var(--accent-hover);
+    }
+    body.dark-mode .salary-table tr:nth-child(even) {
+      background-color: #003422;
+    }
+
+    .highlight {
+        background-color: #fff3b0;
+        color: black;
+        font-weight: 600;
+        padding: 1px 3px;
+        border-radius: 3px;
+        text-shadow: none;
+      }
+    
+      .highlight.active {
+        background-color: #ffd600;
+      }
+    
+      #searchInput {
+        padding: 6px 14px;
+        border-radius: 20px;
+        border: none;
+        font-size: 15px;
+        outline: none;
+        background-color: #fff;
+        color: var(--accent);
+        box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      }
+    
+      .search-nav {
+        display: flex;
+        flex-direction: row;
+        gap: 4px;
+        margin-left: 6px;
+      }
+    
+      .search-nav button {
+        padding: 5px 10px;
+        font-size: 14px;
+        border: none;
+        background-color: #fff;
+        border-radius: 6px;
+        cursor: pointer;
+        color: var(--accent);
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        transition: background 0.2s;
+      }
+    
+      .search-nav button:hover {
+        background-color: #cceee1;
+      }
+    
+    /* Responsivo */
+    @media (max-width: 768px) {
+      .sidebar {
+        transform: translateX(-100%);
+        top: calc(var(--header-height) + 10px);
+        height: calc(100% - var(--header-height) - 10px);
+      }
+    
+      .sidebar.show {
+        transform: translateX(0);
+      }
+    
+      .menu-toggle {
+        display: block;
+      }
+    
+      .main {
+        margin-left: 0;
+        padding: calc(var(--header-height) + 60px) 20px 40px;
+      }
+    
+      .header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        min-height: var(--header-height);
+        padding: 20px 10px;
+      }
+    
+      .header-title {
+        font-size: 26px;
+        margin: 10px 0 0;
+      }
+    
+      .toggle-btn {
+        margin-top: 10px;
+      }
+    
+      .header .logo {
+        max-height: 52px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .header-title {
+        font-size: 22px;
+      }
+    
+      .section p,
+      .section h2,
+      .section h3 {
+        font-size: 17px;
+      }
+    
+      .sidebar a {
+        font-size: 16px;
+      }
+    
+    }
+    </style>
+    
+</head>
+<body>
+  <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
+  <header class="header">
+    <a href="https://www.defensoria.mt.def.br/dpmt/portal/" target="_blank">
+      <img src="https://www.defensoria.mt.def.br/dpmt/assets/images/Logo-branco.png" class="logo" alt="Logo DPE-MT">
+    </a>
+    <div class="header-title">
+      Manual de Progressão Funcional
+      <div style="font-size: 16px; text-transform: uppercase; margin-top: 4px; font-weight: 600; color: #e7fbee;">
+        COMISSÃO DE LINGUAGEM SIMPLES
+      </div>
+    </div>
+    <input type="text" id="searchInput" placeholder="Pesquisar..." />
+    <div class="search-nav">
+      <button onclick="navigateResult(-1)">↑</button>
+      <button onclick="navigateResult(1)">↓</button>
+    </div>
+    <button class="toggle-btn" onclick="toggleMode()">Modo Noturno</button>
+  </header>
+
+  <div id="copyToast" style="display:none; position: fixed; top: 190px; right: 20px; background-color: #00b36a; color: white; padding: 10px 16px; border-radius: 8px; font-weight: bold; box-shadow: 0 4px 8px rgba(0,0,0,0.2); z-index: 10000; opacity: 0; transition: opacity 0.4s ease;">
+    Conteúdo copiado com sucesso!
+  </div>
+
+  <a href="https://wa.me/556599545349" target="_blank" style="position: fixed; bottom: 20px; right: 20px; background-color: #25D366; color: white; padding: 24px 40px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 18px; box-shadow: 0 4px 8px rgba(0,0,0,0.2); z-index: 9999;">
+    Fale com a DGP
+  </a>
+
+  <nav class="sidebar" id="sidebar">
+    <a href="#intro" onclick="closeSidebarOnMobile()">O que é Progressão?</a>
+    <a href="#medio" onclick="closeSidebarOnMobile()">Ensino Médio</a>
+    <a href="#superior" onclick="closeSidebarOnMobile()">Ensino Superior</a>
+    <a href="#como" onclick="closeSidebarOnMobile()">Como Solicitar?</a>
+    <a href="#salarios" onclick="closeSidebarOnMobile()">Tabela de Remuneração</a>
+    <a href="#documentos" onclick="closeSidebarOnMobile()">Dúvidas</a>
+  </nav>
+  <main class="main">
+    <div class="section" id="intro">
+        <h2>O que é Progressão Funcional?</h2>
+        <p>A <strong style="color: var(--accent)">progressão funcional</strong> é uma forma de valorizar o trabalho de quem já está na casa. Basicamente, é o reconhecimento pelo seu crescimento na carreira — seja pelo tempo de serviço, pela qualificação ou pelo seu desempenho.</p>
+        <p>Ela pode acontecer de duas formas:</p>
+        <ul>
+          <li><strong style="color: var(--accent)">Vertical</strong>: quando você muda de nível dentro da mesma classe.</li>
+          <li><strong style="color: var(--accent)">Horizontal</strong>: quando muda de classe (ex: de B para C), com base na sua formação.</li>
+        </ul>
+        <p>Ambas têm critérios específicos, mas o objetivo é o mesmo: <strong style="color: var(--accent)">reconhecer e incentivar</strong> quem continua se dedicando e se aperfeiçoando.</p>
+        <p>Se quiser acessar as normas completas que regulamentam esse processo, clique nos botões abaixo:</p>
+        <div style="display: flex; gap: 16px; flex-wrap: wrap; margin-top: 20px;">
+          <a href="https://drive.google.com/file/d/1PM2M8F4gpbQB9u4MtCpVZX5Cfg_vUm5G/view?usp=drive_link" target="_blank" style="background-color: var(--accent); color: white; padding: 10px 20px; border-radius: 8px; font-weight: bold; text-decoration: none; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">IN SGF 03/2020</a>
+          <a href="https://iframe.leisestaduais.com.br/mt/lei-ordinaria-n-10773-2018-mato-grosso-dispoe-sobre-a-estrutura-organizacional-o-quadro-de-pessoal-e-o-plano-de-carreiras-de-apoio-administrativo-da-defensoria-publica-do-estado-de-mato-grosso-e-da-outras-providencias?origin=instituicao" target="_blank" style="background-color: var(--accent); color: white; padding: 10px 20px; border-radius: 8px; font-weight: bold; text-decoration: none; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">Lei nº 10.773/2018</a>
+        </div>
+      </div>
+      
+      <div class="section" id="medio">
+        <h2>Para Servidores em cargos de Ensino Médio</h2>
+        <h3>Quando posso progredir?</h3>
+        <p>Você pode progredir a cada <strong style="color: var(--accent)">3 anos</strong> no mesmo nível, desde que:</p>
+        <ul>
+          <li>Seja estável;</li>
+          <li>Não tenha sido suspenso nos últimos 2 anos;</li>
+          <li>Tenha uma avaliação de desempenho satisfatória.</li>
+        </ul>
+        <h3>O que preciso para cada classe?</h3>
+        <p><strong>Classe A:</strong> Ensino médio completo.</p>
+        <p><strong>Classe B:</strong> Curso de 120h relacionado ao cargo.</p>
+        <p><strong>Classe C:</strong> Curso superior completo.</p>
+        <p><strong>Classe D:</strong> Especialização (pós-graduação lato sensu com 360h).</p>
+        <p><strong>Classe E:</strong> Mestrado, Doutorado ou 2 especializações + 8 anos no cargo.</p>
+        <p><strong>Classe F:</strong> Tudo da Classe E + mais 1 especialização + 10 anos no cargo.</p>
+      </div>
+      
+      <div class="section" id="superior">
+        <h2>Para Servidores em cargos de Ensino Superior</h2>
+        <h3>Quando posso progredir?</h3>
+        <p>As mesmas regras do ensino médio se aplicam:         
+        <ul>
+            <li>Seja estável;</li>
+            <li>Não tenha sido suspenso nos últimos 2 anos;</li>
+            <li>Tenha uma avaliação de desempenho satisfatória.</li>
+          </ul>
+        <h3>O que preciso para cada classe?</h3>
+        <p><strong>Classe A:</strong> Graduação completa.</p>
+        <p><strong>Classe B:</strong> 240h de cursos na área.</p>
+        <p><strong>Classe C:</strong> Especialização com 360h (reconhecida pelo MEC).</p>
+        <p><strong>Classe D:</strong> Mestrado, Doutorado ou 2 especializações.</p>
+        <p><strong>Classe E:</strong> Tudo da Classe D + 1 especialização + 8 anos no cargo.</p>
+        <p><strong>Classe F:</strong> Tudo da Classe D + 2 especializações extras + 10 anos no cargo.</p>
+      </div>
+      
+      <div class="section" id="como">
+        <h2>Como Solicitar a Progressão</h2>
+        <h3>Progressão Vertical</h3>
+        <p><strong style="color: var(--accent)">É automática!</strong> Assim que o critério de tempo for atingido, o avanço é registrado. Se houver demora, você pode receber os valores retroativamente.</p>
+        <h3>Progressão Horizontal</h3>
+        <p>Essa precisa ser solicitada via nosso sistema de protocolo SEI!. Envie com antecedência (até 30 dias antes de completar o tempo mínimo):</p>
+        
+      <div class="sei-button-container" style="text-align: center; margin-top: 20px;">
+        <a href="https://sei.defensoria.mt.def.br" target="_blank">
+          <img src="https://blucaju.com.br/imagens-defensoria/progressaofuncional/LOGO-SEI.png" alt="Acessar o SEI" style="max-width: 200px; height: auto;">
+        </a>
+      </div>
+
+        <ul>
+          <li>Requerimento;</li>
+          <li>Certificado ou diploma (original ou cópia autenticada);</li>
+          <li>Entregue à Comissão de Progressão.</li>
+        </ul>
+        <h3>O que é aceito?</h3>
+        <p>Certificados que contenham <strong style="color: var(--accent)">nome completo, curso, data, carga horária, assinatura</strong> e que sejam <strong style="color: var(--accent)">reconhecidos pelo MEC</strong>. Cursos EAD devem ter código de verificação.</p>
+
+        <h3>Para auxiliar siga o passo-a-passo a seguir:</h3>
+        <div class="carousel-container" id="carousel">
+          <!-- Slides numerados de 1 a 29 -->
+          <div class="carousel-slide">
+            <img src="https://blucaju.com.br/imagens-defensoria/progressaofuncional/1.jpeg" alt="Passo 1">
+            <div class="carousel-text">Passo 1: Acesse o sistema SEI com seu login institucional.</div>
+          </div>
+          <div class="carousel-slide">
+            <img src="https://blucaju.com.br/imagens-defensoria/progressaofuncional/2.png" alt="Passo 2">
+            <div class="carousel-text">Passo 2: No cabeçalho, clique nos três pontinhos para abrir a barra lateral.</div>
+          </div>
+          <div class="carousel-slide">
+            <img src="https://blucaju.com.br/imagens-defensoria/progressaofuncional/3.jpeg" alt="Passo 3">
+            <div class="carousel-text">Passo 3: Na barra lateral, clique em \"Iniciar Processo\".</div>
+          </div>
+          <div class="carousel-slide">
+            <img src="https://blucaju.com.br/imagens-defensoria/progressaofuncional/4.jpeg" alt="Passo 4">
+            <div class="carousel-text">Passo 4: Depois clique no ícone \"+\" para abrir todas as opções de tipos de processo.</div>
+          </div>
+          <div class="carousel-slide">
+            <img src="https://blucaju.com.br/imagens-defensoria/progressaofuncional/5.jpeg" alt="Passo 5">
+            <div class="carousel-text">Passo 5: Digite comunicação na barra de pesquisa e selecione \"Comunicação Interna\".</div>
+          </div>
+          <div class="carousel-slide">
+            <img src="https://blucaju.com.br/imagens-defensoria/progressaofuncional/6.jpeg" alt="Passo 6">
+            <div class="carousel-text">Passo 6: Ao abrir a tela de iniciar processo, escreva a especificação (será o nome do processo) e indique o assunto como \"02.07.10.01 - Progressão Funcional\".</div>
+          </div>
+          <div class="carousel-slide">
+            <img src="https://blucaju.com.br/imagens-defensoria/progressaofuncional/7.jpeg" alt="Passo 7">
+            <div class="carousel-text">Passo 7: No campo de prioridade selecione \"Normal\".</div>
+          </div>
+          <div class="carousel-slide">
+            <img src="https://blucaju.com.br/imagens-defensoria/progressaofuncional/8.jpeg" alt="Passo 8">
+            <div class="carousel-text">Passo 8: No campo de interessados procure pelo seu nome na barra da pesquisa, e marque como \"Público\" no nível de acesso.</div>
+          </div>
+          <div class="carousel-slide">
+            <img src="https://blucaju.com.br/imagens-defensoria/progressaofuncional/9.jpeg" alt="Passo 9">
+            <div class="carousel-text">Passo 9: Clique em \"Incluir Documento\" para criarmos a Comunicação Interna.</div>
+          </div>
+          <div class="carousel-slide">
+            <img src="https://blucaju.com.br/imagens-defensoria/progressaofuncional/10.jpeg" alt="Passo 10">
+            <div class="carousel-text">Passo 10: Pesquise novamente por \"Comunicação Interna\" e selecione.</div>
+          </div>
+          <div class="carousel-slide">
+            <img src="https://blucaju.com.br/imagens-defensoria/progressaofuncional/11.jpeg" alt="Passo 11">
+            <div class="carousel-text">Passo 11: Preencha a descrição, interessado, e adicione a Comissão como destinatário.</div>
+          </div>
+          <div class="carousel-slide">
+            <img src="https://blucaju.com.br/imagens-defensoria/progressaofuncional/12.jpeg" alt="Passo 12">
+            <div class="carousel-text">Passo 12: Informe o assunto novamente e defina o nível de acesso como \"Público\".</div>
+          </div>
+          <div class="carousel-slide">
+            <img src="https://blucaju.com.br/imagens-defensoria/progressaofuncional/13.jpeg" alt="Passo 13">
+            <div class="carousel-text">Passo 13: A página de edição será aberta para redigir a Comunicação Interna.</div>
+          </div>
+          <div class="carousel-slide">
+            <img src="https://blucaju.com.br/imagens-defensoria/progressaofuncional/14.jpeg" alt="Passo 14">
+            <div class="carousel-text">Passo 14: Utilize o modelo sugerido abaixo para preencher sua solicitação.</div>
+          </div>
+          <div class="carousel-slide">
+            <img src="https://blucaju.com.br/imagens-defensoria/progressaofuncional/15.jpeg" alt="Passo 15">
+            <div class="carousel-text">Passo 15: Clique em \"Copiar\" no canto do modelo para usar como base.</div>
+          </div>
+          <div class="carousel-slide">
+            <img src="https://blucaju.com.br/imagens-defensoria/progressaofuncional/16.jpeg" alt="Passo 16">
+            <div class="carousel-text">Passo 16: Você verá a confirmação de que o conteúdo foi copiado com sucesso.</div>
+          </div>
+          <div class="carousel-slide">
+            <img src="https://blucaju.com.br/imagens-defensoria/progressaofuncional/17.jpeg" alt="Passo 17">
+            <div class="carousel-text">Passo 17: Volte à página de edição e cole (Ctrl + V) o conteúdo.</div>
+          </div>
+          <div class="carousel-slide">
+            <img src="https://blucaju.com.br/imagens-defensoria/progressaofuncional/18.jpeg" alt="Passo 18">
+            <div class="carousel-text">Passo 18: Clique em \"Assinar\", digite sua senha e confirme com seu cargo.</div>
+          </div>
+          <div class="carousel-slide">
+            <img src="https://blucaju.com.br/imagens-defensoria/progressaofuncional/19.jpeg" alt="Passo 19">
+            <div class="carousel-text">Passo 19: Crie novo documento para anexar seu certificado ou diploma.</div>
+          </div>
+          <div class="carousel-slide">
+            <img src="https://blucaju.com.br/imagens-defensoria/progressaofuncional/20.jpeg" alt="Passo 20">
+            <div class="carousel-text">Passo 20: Selecione o tipo de documento como \"Externo\".</div>
+          </div>
+          <div class="carousel-slide">
+            <img src="https://blucaju.com.br/imagens-defensoria/progressaofuncional/21.jpeg" alt="Passo 21">
+            <div class="carousel-text">Passo 21: Preencha tipo de documento, data e número de identificação.</div>
+          </div>
+          <div class="carousel-slide">
+            <img src="https://blucaju.com.br/imagens-defensoria/progressaofuncional/22.jpeg" alt="Passo 22">
+            <div class="carousel-text">Passo 22: Se for nato-digital, marque a opção e vá para o passo 25.</div>
+          </div>
+          <div class="carousel-slide">
+            <img src="https://blucaju.com.br/imagens-defensoria/progressaofuncional/23.jpeg" alt="Passo 23">
+            <div class="carousel-text">Passo 23: Se for digitalizado, marque \"Digitalizado nesta Unidade\".</div>
+          </div>
+          <div class="carousel-slide">
+            <img src="https://blucaju.com.br/imagens-defensoria/progressaofuncional/24.jpeg" alt="Passo 24">
+            <div class="carousel-text">Passo 24: Escolha o tipo de conferência referente à autenticação.</div>
+          </div>
+          <div class="carousel-slide">
+            <img src="https://blucaju.com.br/imagens-defensoria/progressaofuncional/25.jpeg" alt="Passo 25">
+            <div class="carousel-text">Passo 25: Informe o remetente e complete o assunto com a codificação correta.</div>
+          </div>
+          <div class="carousel-slide">
+            <img src="https://blucaju.com.br/imagens-defensoria/progressaofuncional/26.jpeg" alt="Passo 26">
+            <div class="carousel-text">Passo 26: Marque como \"Público\", anexe o arquivo e clique em \"Salvar\".</div>
+          </div>
+          <div class="carousel-slide">
+            <img src="https://blucaju.com.br/imagens-defensoria/progressaofuncional/27.jpeg" alt="Passo 27">
+            <div class="carousel-text">Passo 27: Clique no ícone de carta para enviar à comissão.</div>
+          </div>
+          <div class="carousel-slide">
+            <img src="https://blucaju.com.br/imagens-defensoria/progressaofuncional/28.jpeg" alt="Passo 28">
+            <div class="carousel-text">Passo 28: Escolha a unidade \"Comissão de Progressão Funcional\".</div>
+          </div>
+          <div class="carousel-slide">
+            <img src="https://blucaju.com.br/imagens-defensoria/progressaofuncional/29.jpeg" alt="Passo 29">
+            <div class="carousel-text">Passo 29: Finalize clicando em \"Enviar\". Seu processo foi enviado com sucesso.</div>
+          </div>
+
+          <!-- Botões -->
+          <div class="carousel-buttons">
+            <button onclick="changeSlide(-1)">&#8592;</button>
+            <button onclick="changeSlide(1)">&#8594;</button>
+          </div>
+        </div>
+
+
+        <h3>Modelo de Requerimento</h3>
+        <div class="model-box">
+          <button class="copy-btn" onclick="copyModelo()">Copiar</button>
+          <pre id="modeloTexto">
+      À Comissão de Progressão Funcional
+      
+      Eu, [nome completo], matrícula [número], servidor(a) ocupante do cargo de [cargo], venho, por meio deste, requerer a progressão funcional horizontal para a Classe [X], em razão da conclusão do curso de [nome do curso], conforme documentação em anexo.
+      
+      Declaro estar ciente dos critérios exigidos para esta progressão e aguardo a análise e deferimento deste pedido.
+      
+      Atenciosamente,
+      
+      [Local], [Data]
+      
+      [Assinatura]</pre>
+        </div>
+      </div>
+
+    <div class="section" id="salarios">
+        <h2>Entenda sua Remuneração: Salários por Cargo, Classe e Nível</h2>
+        <p>Agora que você entendeu como funciona a progressão funcional, é natural querer saber <strong style="color: var(--accent)">o que muda no bolso</strong>. Por isso, trouxemos aqui os valores brutos de subsídio para cada classe (de <strong style="color: var(--accent)">A até F</strong>) e cada nível (de <strong style="color: var(--accent)">I até X</strong>), organizados por cargo.</p>
+        <p><strong style="color: var(--accent)">É uma forma de você acompanhar sua trajetória</strong> e planejar os próximos passos!</p>
+      
+        <h3 style="margin-top: 40px;">Controlador Interno (Nível Superior)</h3>
+        <div class="salary-table">
+          <table>
+            <thead><tr><th>Nível</th><th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th></tr></thead>
+            <tbody>
+              <tr><td>I</td><td>12.336,23</td><td>15.420,28</td><td>19.275,34</td><td>24.094,19</td><td>30.810,42</td><td>33.698,41</td></tr>
+              <tr><td>II</td><td>12.582,95</td><td>15.728,69</td><td>19.660,87</td><td>24.576,08</td><td>31.087,71</td><td>34.001,69</td></tr>
+              <tr><td>III</td><td>12.834,62</td><td>16.043,27</td><td>20.054,07</td><td>25.067,59</td><td>31.367,51</td><td>34.307,69</td></tr>
+              <tr><td>IV</td><td>13.091,31</td><td>16.364,12</td><td>20.455,16</td><td>25.568,94</td><td>31.649,80</td><td>34.616,47</td></tr>
+              <tr><td>V</td><td>13.353,13</td><td>16.691,39</td><td>20.864,26</td><td>26.080,33</td><td>31.934,67</td><td>34.928,02</td></tr>
+              <tr><td>VI</td><td>13.620,21</td><td>17.025,23</td><td>21.281,55</td><td>26.601,94</td><td>32.222,08</td><td>35.242,37</td></tr>
+              <tr><td>VII</td><td>13.892,60</td><td>17.365,73</td><td>21.707,18</td><td>27.133,98</td><td>32.512,06</td><td>35.559,55</td></tr>
+              <tr><td>VIII</td><td>14.170,45</td><td>17.713,04</td><td>22.141,31</td><td>27.676,65</td><td>32.804,67</td><td>35.879,59</td></tr>
+              <tr><td>IX</td><td>14.453,87</td><td>18.067,29</td><td>22.584,16</td><td>28.230,18</td><td>33.099,93</td><td>36.202,51</td></tr>
+              <tr><td>X</td><td>14.742,92</td><td>18.428,66</td><td>23.035,83</td><td>28.794,78</td><td>33.397,82</td><td>36.528,33</td></tr>
+            </tbody>
+          </table>
+        </div>
+      
+        <h3 style="margin-top: 40px;">Analista (Nível Superior)</h3>
+        <div class="salary-table">
+          <table>
+            <thead><tr><th>Nível</th><th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th></tr></thead>
+            <tbody>
+              <tr><td>I</td><td>7.639,08</td><td>10.214,75</td><td>13.663,04</td><td>17.529,25</td><td>23.575,26</td><td>25.859,24</td></tr>
+              <tr><td>II</td><td>7.830,05</td><td>10.472,08</td><td>14.004,62</td><td>18.203,56</td><td>23.811,02</td><td>27.185,68</td></tr>
+              <tr><td>III</td><td>8.025,78</td><td>10.735,90</td><td>14.354,73</td><td>18.658,66</td><td>24.049,12</td><td>27.865,32</td></tr>
+              <tr><td>IV</td><td>8.226,44</td><td>11.006,35</td><td>14.713,58</td><td>19.125,09</td><td>24.289,61</td><td>28.561,91</td></tr>
+              <tr><td>V</td><td>8.432,11</td><td>11.283,63</td><td>15.081,43</td><td>19.603,22</td><td>24.532,51</td><td>29.275,97</td></tr>
+              <tr><td>VI</td><td>8.642,92</td><td>11.567,91</td><td>15.458,47</td><td>20.093,30</td><td>24.777,83</td><td>30.007,84</td></tr>
+              <tr><td>VII</td><td>8.858,98</td><td>11.859,31</td><td>15.844,94</td><td>20.595,65</td><td>25.025,60</td><td>30.758,05</td></tr>
+              <tr><td>VIII</td><td>9.080,44</td><td>12.163,84</td><td>16.241,05</td><td>21.110,11</td><td>25.275,89</td><td>31.525,78</td></tr>
+              <tr><td>IX</td><td>9.307,45</td><td>12.464,95</td><td>16.647,09</td><td>21.638,29</td><td>25.528,63</td><td>32.315,09</td></tr>
+              <tr><td>X</td><td>9.540,13</td><td>12.778,35</td><td>17.063,25</td><td>22.032,95</td><td>25.783,91</td><td>32.701,74</td></tr>
+            </tbody>
+          </table>
+        </div>
+      
+        <h3 style="margin-top: 40px;">Técnico Administrativo (Nível Médio)</h3>
+        <div class="salary-table">
+          <table>
+            <thead><tr><th>Nível</th><th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th></tr></thead>
+            <tbody>
+              <tr><td>I</td><td>3.556,68</td><td>5.208,08</td><td>8.112,04</td><td>10.332,41</td><td>15.427,31</td><td>19.911,43</td></tr>
+              <tr><td>II</td><td>3.647,87</td><td>5.342,13</td><td>8.317,36</td><td>10.774,52</td><td>15.581,57</td><td>20.938,53</td></tr>
+              <tr><td>III</td><td>3.741,42</td><td>5.479,65</td><td>8.527,86</td><td>11.047,29</td><td>15.737,39</td><td>21.471,80</td></tr>
+              <tr><td>IV</td><td>3.837,40</td><td>5.620,70</td><td>8.743,71</td><td>11.326,97</td><td>15.894,75</td><td>22.018,65</td></tr>
+              <tr><td>V</td><td>3.935,81</td><td>5.765,39</td><td>8.965,00</td><td>11.613,69</td><td>16.053,72</td><td>22.579,42</td></tr>
+              <tr><td>VI</td><td>4.036,72</td><td>5.913,84</td><td>9.191,91</td><td>11.907,71</td><td>16.214,26</td><td>23.154,47</td></tr>
+              <tr><td>VII</td><td>4.140,28</td><td>6.066,07</td><td>9.424,57</td><td>12.209,17</td><td>16.376,39</td><td>23.744,17</td></tr>
+              <tr><td>VIII</td><td>4.246,46</td><td>6.222,24</td><td>9.663,11</td><td>12.518,25</td><td>16.540,16</td><td>24.348,91</td></tr>
+              <tr><td>IX</td><td>4.355,39</td><td>6.382,44</td><td>9.907,69</td><td>13.000,24</td><td>16.705,56</td><td>25.444,43</td></tr>
+              <tr><td>X</td><td>4.467,10</td><td>6.546,75</td><td>10.158,45</td><td>13.299,39</td><td>16.872,62</td><td>26.006,05</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="section" id="documentos">
+        <h2>Dúvidas</h2>
+        <p>Converse com a <strong style="color: var(--accent)">Diretoria de Gestão de Pessoas</strong> ou com a <strong style="color: var(--accent)">Comissão de Progressão</strong>. Elas estão aqui para te apoiar!</p>
+      </div>
+
+</main>
+<script>
+    let results = [];
+    let currentIndex = -1;
+
+    function normalize(text) {
+    return text.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+    }
+
+    function copyModelo() {
+      const texto = document.getElementById("modeloTexto").innerText;
+      navigator.clipboard.writeText(texto).then(() => {
+        const toast = document.getElementById("copyToast");
+        toast.style.display = "block";
+        setTimeout(() => {
+          toast.style.opacity = 1;
+        }, 10);
+        setTimeout(() => {
+          toast.style.opacity = 0;
+          setTimeout(() => {
+            toast.style.display = "none";
+          }, 400);
+        }, 1500);
+      });
+    }
+
+    function highlightMatches(keyword) {
+    const content = document.querySelector('.main');
+    const elements = content.querySelectorAll('p, h2, h3');
+
+    // Reset
+    results = [];
+    currentIndex = -1;
+
+    // Limpa todas as marcações anteriores
+    elements.forEach(el => {
+        el.innerHTML = el.textContent;
+    });
+
+    if (!keyword.trim()) return; // ⬅️ não faz nada se vazio
+
+    const normalizedKeyword = normalize(keyword);
+    const searchTerms = normalizedKeyword.split(" ").filter(Boolean);
+
+    if (searchTerms.length === 0) return;
+
+    elements.forEach(el => {
+        const text = normalize(el.textContent);
+        if (searchTerms.every(term => text.includes(term))) {
+        const regex = new RegExp(`(${searchTerms.join('|')})`, 'gi');
+        el.innerHTML = el.innerHTML.replace(regex, match =>
+            `<mark class="highlight">${match}</mark>`
+        );
+        results.push(el);
+        }
+    });
+
+    if (results.length > 0) {
+        currentIndex = 0;
+        scrollToCurrentResult();
+    }
+    }
+
+
+    function scrollToCurrentResult() {
+    if (results.length > 0) {
+        results.forEach(el => {
+        el.querySelectorAll('.highlight').forEach(h => h.classList.remove('active'));
+        });
+
+        const activeHighlights = results[currentIndex].querySelectorAll('.highlight');
+        activeHighlights.forEach(h => h.classList.add('active'));
+
+        results[currentIndex].scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+    }
+
+
+    function navigateResult(direction) {
+    if (!results.length) return;
+    currentIndex += direction;
+
+    if (currentIndex < 0) currentIndex = results.length - 1;
+    if (currentIndex >= results.length) currentIndex = 0;
+
+    scrollToCurrentResult();
+    }
+
+    document.getElementById('searchInput').addEventListener('input', (e) => {
+    highlightMatches(e.target.value.trim());
+    });
+  
+  function toggleMode() {
+    document.body.classList.toggle('dark-mode');
+  }
+
+  function toggleSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    sidebar.classList.toggle('show');
+  }
+
+  function closeSidebarOnMobile() {
+    if (window.innerWidth <= 768) {
+      document.getElementById('sidebar').classList.remove('show');
+    }
+  }
+  
+  let currentSlide = 0;
+  const slides = document.querySelectorAll(".carousel-slide");
+  function showSlide(index) {
+    slides.forEach((slide, i) => {
+      slide.style.display = i === index ? "block" : "none";
+    });
+  }
+
+  function changeSlide(direction) {
+    const next = currentSlide + direction;
+    if (next < 0 || next >= slides.length) return; // bloqueia loop
+    currentSlide = next;
+    showSlide(currentSlide);
+  }
+
+  document.addEventListener("DOMContentLoaded", () => showSlide(currentSlide));
+</script>
+</body>
+</html>
